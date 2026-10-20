@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
+    <stdyDscr>
+        <citation>
+            <titlStmt>
+                <titl>DATAVERSITY 2026 data maturity survey</titl>
+            </titlStmt>
+            <rspStmt>
+                <AuthEnty>DATAVERSITY</AuthEnty>
+            </rspStmt>
+        </citation>
+        <method>
+            <dataColl>
+                <dataCollector source="producer">DATAVERSITY</dataCollector>
+                <collMode>online</collMode>
+            </dataColl>
+        </method>
+    </stdyDscr>
+    <dataDscr>
+        <!-- Variable descriptions would go here -->
+        <!--  -->
+        <var ID="id">
+            <labl>id</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="team">
+            <labl>team</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="response_date">
+            <labl>response date</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="is_complete">
+            <labl>is complete</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="tools">
+            <labl>What tools do you use to document and organise data at your organization?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="industry">
+            <labl>Industry</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="number_of_employees">
+            <labl>Number of employees</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>A</catValu>
+                    <labl level="catgry">Under 50</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>B</catValu>
+                    <labl level="catgry">51 - 99</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>C</catValu>
+                    <labl level="catgry">100 - 499</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>D</catValu>
+                    <labl level="catgry">500 - 999</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>E</catValu>
+                    <labl level="catgry">1,000 - 4,999</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>F</catValu>
+                    <labl level="catgry">5,000 - 9,999</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>G</catValu>
+                    <labl level="catgry">10,000 and over</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>X</catValu>
+                    <labl level="catgry">Prefer not to say</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="job_category">
+            <labl>Job Function</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="geography">
+            <labl>Which region do you primarily work in?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="other_data_activity">
+            <labl>other data activity</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="data_used_or_created">
+            <labl>What data do you use or create as part of your role in the organization?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_metadata_1">
+            <labl>My organization understands how data documentation supports the delivery of core functions and outcomes.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_metadata_2">
+            <labl>It is easy for me to find data I need for my role.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_analysis_1">
+            <labl>My organization documents why data is collected, along with what is stored.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_analysis_2">
+            <labl>It is easy for me to find documentation that describes what data means.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_standards_1">
+            <labl>My organization has a consistent approach to data documentation.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_standards_2">
+            <labl>It is easy for me to find, link and compare related data using common terms.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_teamwork_1">
+            <labl>Teams in my organization are encouraged to create, review and share documentation for their data assets.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="beliefs_teamwork_2">
+            <labl>It is easy is it for me to talk about data with others across my organization.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_inventory_1">
+            <labl>How do you most commonly discover other data assets in the organization?</labl>
+            <qstn>
+                <qstnLit>If more than one is applicable, select the activity you most commonly perform.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I will speak directly to a person who I think knows about this data</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I have access to a list of data assets managed by my team, but I am not aware of data outside my team</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I have access to a list of data assets that is shared by members of my organization</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I can search for data within a central data inventory that returns results based on my needs and permissions</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_inventory_2">
+            <labl>How do you most commonly record the existence of data assets within your team?</labl>
+            <qstn>
+                <qstnLit>If more than one is applicable, select the activity you most commonly perform.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not have a tool for recording documentation about data assets made within my team</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I use ad hoc systems like Excel or Word etc.</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I use generalized documentation systems such as SharePoint or Confluence</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I use specialized data cataloging tools for documenting data assets</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_inventory_qual">
+            <labl>(Optional) Please include a list of processes, systems or tools you use to find data in your organization. If this includes emailing people you know, you can just include &#x27;email&#x27; as one of your processes.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_document_1">
+            <labl>What information do you usually record for data assets created within your team?</labl>
+            <qstn>
+                <qstnLit>If more than one is applicable, select the activity you most commonly perform.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not document data assets at this point in time</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I document data based on my own needs or requirements</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I follow processes my team has developed for documenting data</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I follow organizational standards for recording information about data assets</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_document_2">
+            <labl>What information do you or your team commonly record about fields within a data asset, such as describing columns in a spreadsheet or database table?</labl>
+            <qstn>
+                <qstnLit>If more than one is applicable, select the activity you most commonly perform.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not record information at this level about our data</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I record the names and descriptions of columns</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I record the names, descriptions, and any codes or data types for each column</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I record the names, descriptions and codes for each column, and include links to common data glossary defintions</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_document_qual">
+            <labl>(Optional) Please include a list of systems or tools you use to document data in your organization. If this includes tools like Word, Excel, Sharepoint or other similar knowledge management tools, include these as tools you use.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_endorse_1">
+            <labl>Who is responsible for reviewing data documentation in your team or organization?</labl>
+            <qstn>
+                <qstnLit>If more than one is applicable, select the answer that matches you usual routine.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Data documentation does not get reviewed at this point in time</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Data documentation is reviewed on an informal basis by my peers</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">My team has a process for reviewing data documentation</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Data governance team(s) within the organization review data documentation</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_endorse_2">
+            <labl>How can you find out who has signed off on approval/review of data assets in the organization?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not have access to documentation from other teams</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I can view information about data assets, but am unable to see approval documentation</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I can view approval processes for data documentation within my team</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Approval processes for all data I use is documented in a formal register in the organization</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_endorse_qual">
+            <labl>(Optional) Please tell us about business areas you engage with to assist with publication of data documentation, and any internal or external stakeholders who you think would find your data documentation useful.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_audit_1">
+            <labl>How do you manage commonly referenced data terms?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not manage common data terms at this point in time</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I use methods such as copying and pasting existing definitions from existing records for consistency when documenting new data assets</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I refer to a list of data terms that my team manages internally</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I use data terms from a governed central system that records and links these terms to data assets</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_audit_2">
+            <labl>How do you reuse common data terms from a data glossary?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I don&#x27;t do this as part of my current role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I do not use a data glossary as part of my work </labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I use methods such as copying and pasting definitions from a data glossary</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I copy and paste definitions and include a link to the source, such as a document or data glossary web page</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I reference glossary terms from a central source that provides links between data assets and data terms</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_audit_qual">
+            <labl>(Optional) Please tell us about terms you use commonly in your work that may not be understood by users of your data, or may not be used the same way as another team. Examples could include terms like supplier, staff member or identifier.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_leadership_1">
+            <labl>Are you aware of policies for managing data assets within your organization?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I do not manage data in my role, and am not impacted by data policies</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I am not aware of policies for managing data assets at the present time</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">I am aware of internal policies my team has developed for managing data assets</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">I am aware of policies for managing data assets, but am not aware of how they relate to my role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">I am aware of our organization&#x27;s data governance and data management policies, and my responsiblity for data safety</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_leadership_2">
+            <labl>How does your organization&#x27;s leadership promote metadata adoption?</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">I do not use metadata in my role</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">I am not aware of metadata promotion within the organization at the present time</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Metadata is promoted within my team but not at an organizational level</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Metadata is promoted internally e.g. through the organization’s intranet</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Metadata is promoted both internally and externally, e.g. in the annual report or on our website</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="actions_leadership_qual">
+            <labl>(Optional) Please tell us about policies around data use and access that impact you in your role.</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="self_assess_value">
+            <labl>My organization gets the best value it can from our data</labl>
+            <qstn>
+                <qstnLit>Value includes things like improving decision making, improving services, or meeting regulatory requirements.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="self_assess_trust">
+            <labl>Data at my organization is generally trusted.</labl>
+            <qstn>
+                <qstnLit>Trust includes things like confidence in data quality, or confidence that data is used ethically and in line with regulations.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="self_assess_secure">
+            <labl>Data at my organization is generally secure.</labl>
+            <qstn>
+                <qstnLit>Security includes things like protection against unauthorised access, loss, or damage.</qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="ai_readiness">
+            <labl>Data at my organization is ready for use with AI</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="ai_results">
+            <labl>My organization uses our data to get the best results from AI</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+        <var ID="ai_responsibility">
+            <labl>Data at my organization is used responsibly with AI</labl>
+            <qstn>
+                <qstnLit></qstnLit>
+                <!--  -->
+                <!--  -->
+                <catgry>
+                    <catValu>1</catValu>
+                    <labl level="catgry">Strongly Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>2</catValu>
+                    <labl level="catgry">Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>3</catValu>
+                    <labl level="catgry">Neither Agree nor Disagree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>4</catValu>
+                    <labl level="catgry">Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>5</catValu>
+                    <labl level="catgry">Strongly Agree</labl>
+                </catgry>
+                <!--  -->
+                <catgry>
+                    <catValu>9</catValu>
+                    <labl level="catgry">Don&#x27;t Know</labl>
+                </catgry>
+                <!--  -->
+                <!--  -->
+            </qstn>
+        </var>
+        <!--  -->
+    </dataDscr>
+</codeBook>
