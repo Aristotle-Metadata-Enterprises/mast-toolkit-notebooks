@@ -1,7 +1,26 @@
-import matplotlib.pyplot as plt
+from dataclasses import dataclass
+from pathlib import Path
+
 import pandas as pd
-from IPython.display import Markdown, display
-from scipy.stats import spearmanr
+
+PROJECT_NAME = "dataversity-2026"
+RESPONSES_FILENAME = "dataversity_survey_2iyUvU5Z4Pdi25fBvXwQsJ_responses.csv"
+METADATA_FILENAME = "dataversity_metadata.csv"
+
+NEGATIVE = [1, 2]
+NEUTRAL = [3]
+POSITIVE = [4, 5]
+DONT_KNOW = 9
+RECODE_MAP = {
+    **{value: "negative" for value in NEGATIVE},
+    **{value: "neutral" for value in NEUTRAL},
+    **{value: "positive" for value in POSITIVE},
+    DONT_KNOW: "don't know",
+}
+
+RATING_PREFIXES = ("beliefs_", "actions_", "self_assess_", "ai_")
+RECODED_PREFIXES = ("beliefs_", "self_assess_", "ai_")
+DERIVED_SUFFIXES = ("_qual", "_recoded", "_excluding_1")
 
 
 def parse_choices(choices):
@@ -17,113 +36,125 @@ def parse_choices(choices):
     return parsed
 
 
-def display_original_correlations(
-    completed, action_analysis_columns, outcome_columns, p_threshold=0.025
-):
-    rows = []
-    for outcome_column in outcome_columns:
-        for action_column, analysis_action_column in action_analysis_columns.items():
-            paired = (
-                completed[[analysis_action_column, outcome_column]]
-                .rename(columns={analysis_action_column: action_column})
-                .replace(9, float("nan"))
-                .dropna()
-            )
-            result = spearmanr(paired[action_column], paired[outcome_column])
-            rows.append(
-                {
-                    "outcome": outcome_column,
-                    "action": action_column,
-                    "spearman_rho": result.statistic,
-                    "p_value": result.pvalue,
-                    "n": len(paired),
-                }
-            )
-
-    correlations = pd.DataFrame(rows)
-    for outcome_column in outcome_columns:
-        outcome_table = correlations.loc[
-            (correlations["outcome"] == outcome_column)
-            & (correlations["p_value"] < p_threshold),
-            ["action", "spearman_rho", "p_value", "n"],
-        ].sort_values("p_value")
-        display(Markdown(f"### {outcome_column}"))
-        display(outcome_table.reset_index(drop=True))
-    return correlations
+@dataclass
+class SurveyData:
+    responses: pd.DataFrame
+    metadata: pd.DataFrame
+    analysis_df: pd.DataFrame
+    completed: pd.DataFrame
+    rating_columns: list
+    beliefs_columns: list
+    action_columns: list
+    action_analysis_columns: dict
+    self_assess_columns: list
+    ai_outcome_columns: list
+    recode_columns: list
 
 
-def plot_positive_metrics_by_category(data, category_column, metric_columns, title):
-    chart_data = data[[category_column, *metric_columns]].copy()
-    chart_data["category_label"] = (
-        chart_data[category_column]
-        .fillna("Unspecified")
-        .astype("string")
-        .str.strip()
-        .replace("", "Unspecified")
-    )
+def find_data_dir(project_name=PROJECT_NAME):
+    data_dir = Path("data") / project_name
+    if data_dir.exists():
+        return data_dir
+    return Path("../data") / project_name
 
-    category_counts = chart_data["category_label"].value_counts()
-    small_categories = category_counts.index[category_counts < 5]
-    chart_data["category_group"] = chart_data["category_label"].where(
-        ~chart_data["category_label"].isin(small_categories), "Other"
-    )
-    group_counts = chart_data["category_group"].value_counts()
-    categories = sorted(
-        [category for category in group_counts.index if category != "Other"],
-        key=str.casefold,
-    )
-    if "Other" in group_counts.index:
-        categories.append("Other")
 
-    positive_percentages = pd.DataFrame(
-        index=categories, columns=metric_columns, dtype=float
-    )
-    for category in categories:
-        category_responses = chart_data.loc[chart_data["category_group"] == category]
-        for metric in metric_columns:
-            valid_scores = category_responses[metric].loc[
-                category_responses[metric].isin([1, 2, 3, 4, 5, 9])
-            ]
-            positive_percentages.loc[category, metric] = (
-                valid_scores.isin([4, 5]).mean() * 100
-                if not valid_scores.empty
-                else float("nan")
-            )
+def load_survey(project_name=PROJECT_NAME, verbose=True):
+    data_dir = find_data_dir(project_name)
+    responses_file = data_dir / RESPONSES_FILENAME
+    metadata_file = data_dir / METADATA_FILENAME
 
-    figure_width = max(14, len(categories) * 0.55)
-    figure, axis = plt.subplots(figsize=(figure_width, 7))
-    positions = range(len(categories))
-    bar_width = min(0.24, 0.8 / len(metric_columns))
-    colors = ["#397b69", "#d28b45", "#547da5"]
-
-    for metric_index, metric in enumerate(metric_columns):
-        offset = (metric_index - (len(metric_columns) - 1) / 2) * bar_width
-        metric_label = (
-            metric.removeprefix("ai_")
-            .removeprefix("self_assess_")
-            .replace("_", " ")
-            .title()
+    responses = pd.read_csv(responses_file)
+    metadata = pd.read_csv(metadata_file)
+    metadata["choices_parsed"] = metadata["choices (if applicable)"].apply(parse_choices)
+    if verbose:
+        print(f"Loaded {len(responses):,} responses from {responses_file}")
+        print(
+            f"Loaded metadata for {len(metadata)} fields; "
+            f"{metadata['choices_parsed'].str.len().gt(0).sum()} fields have choices."
         )
-        axis.bar(
-            [position + offset for position in positions],
-            positive_percentages[metric].to_numpy(),
-            width=bar_width,
-            color=colors[metric_index % len(colors)],
-            label=metric_label,
+    return responses, metadata
+
+
+def find_rating_columns(data):
+    return [
+        column
+        for column in data.columns
+        if column.startswith(RATING_PREFIXES) and not column.endswith(DERIVED_SUFFIXES)
+    ]
+
+
+def columns_with_prefix(columns, prefix):
+    return [column for column in columns if column.startswith(prefix)]
+
+
+def preprocess(responses):
+    """Return a copy of responses with numeric ratings, excluding-1 actions and recodes."""
+    analysis_df = responses.copy()
+    analysis_df["response_date"] = pd.to_datetime(
+        analysis_df["response_date"], errors="coerce", utc=True
+    )
+
+    rating_columns = find_rating_columns(analysis_df)
+    analysis_df[rating_columns] = analysis_df[rating_columns].apply(
+        pd.to_numeric, errors="coerce"
+    )
+
+    # Action rating 1 is "I don't do this", so it is masked for analysis.
+    action_columns = columns_with_prefix(rating_columns, "actions_")
+    for column in action_columns:
+        analysis_df[f"{column}_excluding_1"] = analysis_df[column].mask(
+            analysis_df[column].eq(1)
         )
 
-    axis.set_xticks(
-        list(positions),
-        labels=[f"{category}\n(n={group_counts[category]})" for category in categories],
-        rotation=45,
-        ha="right",
+    recode_columns = [
+        column for column in rating_columns if column.startswith(RECODED_PREFIXES)
+    ]
+    for column in recode_columns:
+        analysis_df[f"{column}_recoded"] = analysis_df[column].map(RECODE_MAP)
+    return analysis_df
+
+
+def select_completed(analysis_df):
+    is_complete = analysis_df["is_complete"].astype("string").str.casefold()
+    return analysis_df.loc[is_complete.eq("true")]
+
+
+def prepare_survey(project_name=PROJECT_NAME, verbose=True):
+    responses, metadata = load_survey(project_name, verbose=verbose)
+    analysis_df = preprocess(responses)
+    rating_columns = find_rating_columns(analysis_df)
+    action_columns = columns_with_prefix(rating_columns, "actions_")
+    recode_columns = [
+        column for column in rating_columns if column.startswith(RECODED_PREFIXES)
+    ]
+    return SurveyData(
+        responses=responses,
+        metadata=metadata,
+        analysis_df=analysis_df,
+        completed=select_completed(analysis_df),
+        rating_columns=rating_columns,
+        beliefs_columns=columns_with_prefix(rating_columns, "beliefs_"),
+        action_columns=action_columns,
+        action_analysis_columns={column: f"{column}_excluding_1" for column in action_columns},
+        self_assess_columns=columns_with_prefix(rating_columns, "self_assess_"),
+        ai_outcome_columns=columns_with_prefix(rating_columns, "ai_"),
+        recode_columns=recode_columns,
     )
-    axis.set_ylim(0, 100)
-    axis.set_ylabel("Positive responses (ratings 4–5, % of valid metric responses)")
-    axis.set_xlabel(f"{category_column.replace('_', ' ').title()} (n = completed responses)")
-    axis.set_title(title)
-    axis.grid(axis="y", alpha=0.2)
-    axis.set_axisbelow(True)
-    axis.legend(title="Outcome")
-    figure.tight_layout()
-    plt.show()
+
+
+def build_pairwise_data(survey):
+    """Return (unadjusted, adjusted) completed-response ratings for pairwise analysis.
+
+    Unadjusted keeps "don't know" (9) and action rating 1. Adjusted turns 9 into missing
+    and uses the *_excluding_1 action columns.
+    """
+    columns = survey.rating_columns
+    unadjusted_data = survey.completed[columns]
+
+    adjusted_source = [survey.action_analysis_columns.get(column, column) for column in columns]
+    adjusted_data = (
+        survey.completed[adjusted_source]
+        .set_axis(columns, axis=1)
+        .replace(DONT_KNOW, float("nan"))
+    )
+    return unadjusted_data, adjusted_data
