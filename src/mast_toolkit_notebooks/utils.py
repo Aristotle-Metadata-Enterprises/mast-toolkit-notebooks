@@ -10,6 +10,11 @@ METADATA_FILENAME = "dataversity_metadata.csv"
 NEGATIVE = [1, 2]
 NEUTRAL = [3]
 POSITIVE = [4, 5]
+
+NEGATIVE_SCORE = 1
+NEUTRAL_SCORE = 2
+POSITIVE_SCORE = 3
+
 DONT_KNOW = 9
 RECODE_MAP = {
     **{value: "negative" for value in NEGATIVE},
@@ -17,10 +22,15 @@ RECODE_MAP = {
     **{value: "positive" for value in POSITIVE},
     DONT_KNOW: "don't know",
 }
+RECODE_SCORE_MAP = {
+    "negative": NEGATIVE_SCORE,
+    "neutral": NEUTRAL_SCORE,
+    "positive": POSITIVE_SCORE,
+}
 
 RATING_PREFIXES = ("beliefs_", "actions_", "self_assess_", "ai_")
 RECODED_PREFIXES = ("beliefs_", "self_assess_", "ai_")
-DERIVED_SUFFIXES = ("_qual", "_recoded", "_excluding_1")
+DERIVED_SUFFIXES = ("_qual", "_recoded", "_recoded_score", "_excluding_1")
 
 
 def parse_choices(choices):
@@ -29,8 +39,9 @@ def parse_choices(choices):
 
     parsed = []
     for choice in choices.split("|"):
-        code, separator, value = choice.partition(";")
-        if not separator:
+        code, value = choice.split(";")
+        value = value.replace("COMMA", ",")
+        if not code or not value:
             raise ValueError(f"Malformed choice entry: {choice!r}")
         parsed.append({"code": code, "value": value})
     return parsed
@@ -110,7 +121,11 @@ def preprocess(responses):
         column for column in rating_columns if column.startswith(RECODED_PREFIXES)
     ]
     for column in recode_columns:
-        analysis_df[f"{column}_recoded"] = analysis_df[column].map(RECODE_MAP)
+        recoded_column = f"{column}_recoded"
+        analysis_df[recoded_column] = analysis_df[column].map(RECODE_MAP)
+        analysis_df[f"{recoded_column}_score"] = analysis_df[recoded_column].map(
+            RECODE_SCORE_MAP
+        )
     return analysis_df
 
 

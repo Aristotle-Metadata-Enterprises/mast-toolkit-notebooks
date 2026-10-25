@@ -1,6 +1,14 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
+PLOT_WIDTH = 18
+
+recoded_choice_labels = {
+    "negative": "Negative (Strongly Disagree, Disagree)",
+    "neutral": "Neutral (Neither Agree nor Disagree)",
+    "positive": "Positive (Agree, Strongly Agree)",
+}
+
 
 def choice_labels(metadata_by_field, field):
     return {
@@ -14,6 +22,55 @@ def to_percent_exc_nan(counts):
     return counts.div(row_totals, axis=0) * 100
 
 
+def plot_stacked_percent_barh(percentages, colors, labels, title):
+    """Plot rows of percentages (columns are stacked in order) as horizontal bars."""
+    figure, axis = plt.subplots(figsize=(PLOT_WIDTH, 12))
+    figure.subplots_adjust(left=0.38, right=0.96, top=0.88, bottom=0.25)
+    left = [0.0] * len(percentages)
+    positions = range(len(percentages))
+    for code in percentages.columns:
+        widths = percentages[code].fillna(0).to_list()
+        axis.barh(
+            positions,
+            widths,
+            left=left,
+            height=0.75,
+            color=colors[code],
+            edgecolor="white",
+            label=labels[code],
+        )
+        for position, width, start in zip(positions, widths, left):
+            if width >= 5:
+                axis.text(
+                    start + width / 2,
+                    position,
+                    f"{width:.0f}%",
+                    ha="center",
+                    va="center",
+                    fontsize=16,
+                    color="white" if code in (1, 5, 9) else "black",
+                )
+        left = [start + width for start, width in zip(left, widths)]
+
+    axis.set_yticks(list(positions), labels=percentages.index, fontsize=18)
+    axis.tick_params(axis="x", labelsize=16)
+    axis.invert_yaxis()
+    axis.set_xlim(0, 100)
+    axis.set_xlabel("Responses (%)", fontsize=18)
+    axis.set_title(title, fontsize=24, pad=0)
+    axis.grid(axis="x", alpha=0.2)
+    axis.set_axisbelow(True)
+    figure.legend(
+        *axis.get_legend_handles_labels(),
+        fontsize=16,
+        ncol=len(percentages.columns),
+        loc="lower center",
+        bbox_to_anchor=(0.5, 0.02),
+        frameon=False,
+    )
+    plt.show()
+
+
 def plot_positive_metrics_by_category(data, category_column, metric_columns, title):
     chart_data = data[[category_column, *metric_columns]].copy()
     chart_data["category_label"] = (
@@ -25,9 +82,13 @@ def plot_positive_metrics_by_category(data, category_column, metric_columns, tit
     )
 
     category_counts = chart_data["category_label"].value_counts()
-    small_categories = category_counts.index[category_counts < 5]
+    kept_categories = category_counts.index[category_counts >= 5]
+    # Keep the largest categories so at most max_labels remain, including "Other".
+    max_labels = 10
+    if len(kept_categories) < len(category_counts) or len(kept_categories) > max_labels:
+        kept_categories = kept_categories[: max_labels - 1]
     chart_data["category_group"] = chart_data["category_label"].where(
-        ~chart_data["category_label"].isin(small_categories), "Other"
+        chart_data["category_label"].isin(kept_categories), "Other"
     )
     group_counts = chart_data["category_group"].value_counts()
     categories = sorted(
@@ -49,8 +110,8 @@ def plot_positive_metrics_by_category(data, category_column, metric_columns, tit
             # The mean of an empty selection is NaN, so empty categories stay blank.
             positive_percentages.loc[category, metric] = valid_scores.isin([4, 5]).mean() * 100
 
-    figure_width = max(14, len(categories) * 0.55)
-    figure, axis = plt.subplots(figsize=(figure_width, 7))
+    figure, axis = plt.subplots(figsize=(PLOT_WIDTH, 12))
+    figure.subplots_adjust(left=0.38, right=0.96, top=0.88, bottom=0.25)
     positions = range(len(categories))
     bar_width = min(0.24, 0.8 / len(metric_columns))
     colors = ["#397b69", "#d28b45", "#547da5"]
@@ -63,26 +124,33 @@ def plot_positive_metrics_by_category(data, category_column, metric_columns, tit
             .replace("_", " ")
             .title()
         )
-        axis.bar(
+        axis.barh(
             [position + offset for position in positions],
             positive_percentages[metric].to_numpy(),
-            width=bar_width,
+            height=bar_width,
             color=colors[metric_index % len(colors)],
             label=metric_label,
         )
 
-    axis.set_xticks(
+    axis.set_yticks(
         list(positions),
-        labels=[f"{category}\n(n={group_counts[category]})" for category in categories],
-        rotation=45,
-        ha="right",
+        labels=[f"{category} (n={group_counts[category]})" for category in categories],
+        fontsize=16,
     )
-    axis.set_ylim(0, 100)
-    axis.set_ylabel("Positive responses (ratings 4–5, % of valid metric responses)")
-    axis.set_xlabel(f"{category_column.replace('_', ' ').title()} (n = completed responses)")
-    axis.set_title(title)
-    axis.grid(axis="y", alpha=0.2)
+    axis.tick_params(axis="x", labelsize=16)
+    axis.invert_yaxis()
+    axis.set_xlim(0, 100)
+    axis.set_xlabel("Percent of positive responses (ratings 'agree' or 'strongly agree')", fontsize=16)
+    axis.set_ylabel(f"{category_column.replace('_', ' ').title()} (n = completed responses)", fontsize=16)
+    axis.set_title("Percent of positive responses: " + title, fontsize=20)
+    axis.grid(axis="x", alpha=0.2)
     axis.set_axisbelow(True)
-    axis.legend(title="Outcome")
-    figure.tight_layout()
+    figure.legend(
+        *axis.get_legend_handles_labels(),
+        fontsize=16,
+        ncol=len(metric_columns),
+        loc="lower center",
+        bbox_to_anchor=(0.5, 0.02),
+        frameon=False,
+    )
     plt.show()

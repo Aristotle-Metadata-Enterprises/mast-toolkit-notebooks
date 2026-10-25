@@ -10,6 +10,8 @@ from mast_toolkit_notebooks.utils import DONT_KNOW
 ALPHA = 0.05
 MIN_STRONG_RHO = 0.35
 TOP_N = 5
+MIN_PAIR_RHO = 0.4
+TOP_PAIRS = 3
 
 # (minimum |rho|, background colour), strongest first
 RHO_COLOUR_STEPS = [
@@ -131,6 +133,20 @@ def display_strongest_correlations(matrices, survey):
         display(Markdown(f"#### `{variable}`: {question_text[variable]}"))
         top = strongest_correlations(matrices, variable, candidate_variables, question_text)
         display(top.style.format({"rho": "{:.2f}", "p_value": "{:.3g}"}))
+
+
+def top_action_pairs(matrices, survey, outcome_column , n=TOP_PAIRS, min_rho=MIN_PAIR_RHO):
+    """Return the n strongest action and outcome pairs by adjusted |rho| with p < ALPHA."""
+
+    pairs = pd.DataFrame(
+        {
+            "rho": matrices.adjusted_rho.loc[survey.action_columns, [outcome_column]].stack(),
+            "p_value": matrices.adjusted_p.loc[survey.action_columns, [outcome_column]].stack(),
+        }
+    )
+    pairs = pairs.rename_axis(["action", "outcome"]).reset_index()
+    pairs = pairs[(pairs["p_value"] < ALPHA) & (pairs["rho"].abs() > min_rho)]
+    return pairs.sort_values("rho", key=abs, ascending=False).head(n).reset_index(drop=True)
 
 
 def display_original_correlations(
