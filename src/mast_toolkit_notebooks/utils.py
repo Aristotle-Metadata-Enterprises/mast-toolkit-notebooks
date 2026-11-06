@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import pandas as pd
+import country_converter as coco
+
 
 PROJECT_NAME = "dataversity-2026"
 RESPONSES_FILENAME = "dataversity_survey_2iyUvU5Z4Pdi25fBvXwQsJ_responses.csv"
@@ -126,6 +128,21 @@ def preprocess(responses):
         analysis_df[f"{recoded_column}_score"] = analysis_df[recoded_column].map(
             RECODE_SCORE_MAP
         )
+
+    cc = coco.CountryConverter()
+    has_geography = analysis_df["geography"].notna()
+    analysis_df["country_standardized"] = pd.Series(
+        index=analysis_df.index, dtype="string"
+    )
+    analysis_df["continent"] = pd.Series(index=analysis_df.index, dtype="string")
+    analysis_df.loc[has_geography, "country_standardized"] = cc.pandas_convert(
+        series=analysis_df.loc[has_geography, "geography"], to="ISO3"
+    )
+    analysis_df.loc[has_geography, "continent"] = cc.pandas_convert(
+        series=analysis_df.loc[has_geography, "country_standardized"],
+        to="Continent_7",
+    )
+
     return analysis_df
 
 
@@ -137,6 +154,7 @@ def select_completed(analysis_df):
 def prepare_survey(project_name=PROJECT_NAME, verbose=True):
     responses, metadata = load_survey(project_name, verbose=verbose)
     analysis_df = preprocess(responses)
+    completed = select_completed(analysis_df)
     rating_columns = find_rating_columns(analysis_df)
     action_columns = columns_with_prefix(rating_columns, "actions_")
     recode_columns = [
@@ -146,7 +164,7 @@ def prepare_survey(project_name=PROJECT_NAME, verbose=True):
         responses=responses,
         metadata=metadata,
         analysis_df=analysis_df,
-        completed=select_completed(analysis_df),
+        completed=completed,
         rating_columns=rating_columns,
         beliefs_columns=columns_with_prefix(rating_columns, "beliefs_"),
         action_columns=action_columns,

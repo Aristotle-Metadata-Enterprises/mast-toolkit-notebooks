@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
 
 PLOT_WIDTH = 18
 
@@ -154,3 +155,29 @@ def plot_positive_metrics_by_category(data, category_column, metric_columns, tit
         frameon=False,
     )
     plt.show()
+
+
+def plot_geography_choropleth(data, title):
+    """Return a world map colored by respondent count, with count and share on hover."""
+    figure = px.choropleth(
+        data,
+        locations="country_standardized",
+        locationmode="ISO-3",
+        color="count",
+        hover_name="geography",
+        hover_data={
+            "continent": True,
+            "count": ":,d",
+            "percent": ":.1f",
+            "country_standardized": False,
+        },
+        color_continuous_scale=["#7FBDFA", "#005EA1"],
+        labels={"count": "Responses", "percent": "Respondents (%)"},
+        title=title,
+    )
+    figure.update_layout(
+        geo={"showframe": False, "showcoastlines": True},
+        coloraxis_colorbar={"title": "Responses"},
+        margin={"l": 0, "r": 0, "t": 50, "b": 0},
+    )
+    return figure
